@@ -40,7 +40,7 @@ wb = Workbook()
 # ---- aba 1: cotação
 ws = wb.active; ws.title = 'Cotação'
 titulo(ws, 'BOM003 · Bombril Carnaval 2027 · Planilha de cotação · 75 LAB',
-       'Preencha só as células amarelas. Preço com impostos destacados. Resposta até 24/11/2026, 18h. Medidas e materiais: aba Especificação.')
+       'Preencha só as células amarelas. Preço com impostos destacados. Medidas e materiais: aba Especificação.')
 ws['A3'] = 'Fornecedor:'; ws['C3'].fill = ED
 ws['E3'] = 'CNPJ:'; ws['F3'].fill = ED
 ws['A4'] = 'Validade da proposta (dias):'; ws['C4'].fill = ED

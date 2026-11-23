@@ -24,6 +24,5 @@ Kit linear (canal direto): 6 faixas, 15 gargaleiras, 2 wobblers, 1 display = 24 
 - Teclas: setas navegam, M abre o sumário, N mostra o roteiro de fala.
 
 ## Pontos a confirmar com o Caique
-- Prazo de resposta (24/11, 18h), entrega no CD em 06/01/2027 e endereço na Grande São Paulo: datas definidas pela 75 LAB a partir do retorno à Bombril em 25/11 e da instalação até 15/01.
 - Camisetas: 1.000 pelo briefing; a reunião falou em 800 (a planilha pede os dois preços).
 - Mapa dos códigos regionais: P08 Salvador, P09 São Paulo/Vai-Vai, P10 Rio, P11 Olinda.

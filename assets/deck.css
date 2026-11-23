@@ -605,6 +605,11 @@ svg.ico.mini{width:17px;height:17px;stroke-width:2}
 .rs-l .f{white-space:nowrap}
 .p7-planta .piso{fill:rgba(255,210,0,.16);stroke:var(--paper);stroke-width:2}
 .p7-planta .cota-t{fill:var(--am)}
+.regras .rg-g{margin-top:10px}
+.regras .rg-c{padding:30px 26px 28px;min-height:300px}
+.regras .rg-c svg.ico{width:46px;height:46px}
+.regras .rg-c b{font-size:32px;margin:18px 0 10px}
+.regras .rg-c p{font-size:16px}
 
 /* ===== celular: telas empilhadas, sem escala e sem rolagem lateral ===== */
 html.cel,html.cel body{height:auto;overflow-x:hidden;overflow-y:auto;background:var(--paper)}
