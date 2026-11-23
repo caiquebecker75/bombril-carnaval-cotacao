@@ -47,9 +47,10 @@ def kits():
 def totais():
     rows = []
     for l in D.linhas():
-        rows.append(f'<tr><td>{l["cod"]}</td><td class="p">{H.escape(l["nome"])}</td><td class="c">{l["conta"]}</td>'
+        pl = ''.join(f'<span class="pl"><b>{q}</b>{H.escape(o)}</span>' for q, o in l['porloja']) or '<span class="pl"><b>·</b>entrega nacional</span>'
+        rows.append(f'<tr><td>{l["cod"]}</td><td class="p">{H.escape(l["nome"])}</td><td class="pls">{pl}</td><td class="c">× {l["pdvs"]}</td>'
                     f'<td class="t">{br(l["total"])}</td><td class="o">{H.escape(l["obs"])}</td></tr>')
-    t1 = ('<table class="tot"><thead><tr><th>Cód.</th><th>Peça</th><th>Conta (por PDV × PDVs)</th><th>Total</th><th>Observação</th></tr></thead><tbody>'
+    t1 = ('<table class="tot"><thead><tr><th>Cód.</th><th>Peça</th><th>Quantidade por loja</th><th>Lojas / PDVs</th><th>Total</th><th>Observação</th></tr></thead><tbody>'
           + ''.join(rows) + '</tbody></table>')
     cab = ''.join(f'<th>{r}</th>' for r in D.REGIONAIS)
     rows2 = []
@@ -69,6 +70,27 @@ def regional(uni):
     mx = max(u['por'])
     bars = ''.join(f'<div class="rb"><b>{br(n)}</b><i style="--h:{n / mx * 100:.1f}%"></i><span>{r}</span></div>' for r, n in zip(D.REGIONAIS, u['por']))
     return f'<div class="regbar">{bars}</div>'
+
+
+def barato(cods, painel=False):
+    alvo = set(c.strip() for c in cods.split(','))
+    itens = [x for x in D.DE_PARA if x[4] == 'custo' and alvo & set(p.strip() for p in x[0].split(' · '))]
+    rows = ''.join(f'<div class="bar-i"><s>{H.escape(a)}</s><svg class="dp-s"><use href="#i-seta"/></svg><b>{H.escape(d)}</b><p>{H.escape(pq)}</p></div>' for _, a, d, pq, _ in itens)
+    return (f'<div class="bar{" grande" if painel else ""}"><span class="bar-t"><svg class="ico mini"><use href="#i-moeda"/></svg>Para baratear</span>{rows}</div>')
+
+
+def resumo():
+    out = []
+    for cod, rot, nome, img, mat in D.RESUMO:
+        l = LIN[cod]
+        pl = ' + '.join(f'<b>{q}</b> {o}' for q, o in l['porloja']) or 'entrega nacional'
+        tot = br(l['total']) + (' kits' if rot == 'P14 a P17' else '')
+        out.append(f'<div class="rz-c"><figure><img src="assets/img/{img}.jpg" alt="{H.escape(nome)}" data-amplia></figure>'
+                   f'<span class="rz-cod">{rot}</span><h3>{H.escape(nome)}</h3><span class="rz-m">{H.escape(mat)}</span>'
+                   f'<span class="rz-pl">{pl}</span><b class="rz-t">{tot}</b></div>')
+    out.append('<a class="rz-c rz-xls" href="assets/BOM003-planilha-cotacao.xlsx" download><svg class="ico"><use href="#i-planilha"/></svg>'
+               '<h3>Planilha de cotação</h3><span class="rz-m">Preencha o preço unitário de cada linha</span><span class="rz-b"><svg class="ico mini"><use href="#i-download"/></svg>Baixar .xlsx</span></a>')
+    return '<div class="rz-g">' + ''.join(out) + '</div>'
 
 
 def depara(tipo):
@@ -92,11 +114,13 @@ def unif():
             + ''.join(rows) + '</tbody></table>')
 
 
-telas = telas.replace('<!--UNIF-->', unif())
+telas = telas.replace('<!--UNIF-->', unif()).replace('<!--RESUMO-->', resumo())
 telas = telas.replace('<!--TOTAIS-->', t1).replace('<!--REGIONAIS-->', t2).replace('<!--KITS-->', kits())
 telas = re.sub(r'<!--SPEC:([^>]+?)-->', lambda m: spec(m.group(1)), telas)
 telas = re.sub(r'<!--QTD:([^>]+?)-->', lambda m: qtd(m.group(1)), telas)
 telas = re.sub(r'<!--REG:(\w+)-->', lambda m: regional(m.group(1)), telas)
+telas = re.sub(r'<!--BARATOTAB:([^>]+?)-->', lambda m: barato(m.group(1), True), telas)
+telas = re.sub(r'<!--BARATO:([^>]+?)-->', lambda m: barato(m.group(1)), telas)
 telas = re.sub(r'<!--DEPARA:(\w+)-->', lambda m: depara(m.group(1)), telas)
 telas = re.sub(r'<!--N:(\w+)-->', lambda m: br(D.UNIVERSO[m.group(1)]['total']), telas)
 telas = re.sub(r'<!--T:([^>]+?)-->', lambda m: br(LIN[m.group(1)]['total']), telas)

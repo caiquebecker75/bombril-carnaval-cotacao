@@ -62,6 +62,8 @@ ITENS = [
     ('P17', 'Pirulito da bag', [('praca', 1)], 'un', 'estandarte com haste, preso na bag'),
 ]
 CAMISETAS = 1000  # briefing, tabela "Nacional · Camisetas"
+POR = {'direto': 'por loja do canal direto', 'ponta': 'por ponta de gôndola', 'ilha': 'por ilha (ponto extra)',
+       'praca': 'por praça', 'demo': 'por demonstradora'}
 
 
 def por_regional(regra):
@@ -78,7 +80,11 @@ def linhas():
         v = por_regional(regra) if regra else [0] * len(REGIONAIS)
         tot = sum(v) if regra else CAMISETAS
         porpdv = ' + '.join(f"{q} × {UNIVERSO[u]['total']:,}".replace(',', '.') for u, q in regra) if regra else 'nacional'
-        out.append({'cod': cod, 'nome': nome, 'un': un, 'obs': obs, 'regional': v, 'total': tot, 'conta': porpdv})
+        porloja = [(q, POR[u]) for u, q in regra]
+        pdvs = ' + '.join(br(UNIVERSO[u]['total']) for u, q in regra) if regra else '1 entrega'
+        txt = ' + '.join(f'{q} {o}' for q, o in porloja) if regra else f'{br(CAMISETAS)} no total'
+        out.append({'cod': cod, 'nome': nome, 'un': un, 'obs': obs, 'regional': v, 'total': tot, 'conta': porpdv,
+                    'porloja': porloja, 'porloja_txt': txt, 'pdvs': pdvs})
     return out
 
 
@@ -151,6 +157,14 @@ SPEC = {
 # o que mudou do caderno original para a versão de cotação: (peça, antes, depois, por quê, tipo)
 # tipo: 'custo' (barateia) ou 'acerto' (deixa a informação redonda)
 DE_PARA = [
+    ('P02', 'Cartão 350 g ou PS 0,5 mm', 'Cartão triplex 300 g',
+     'O mais barato dos dois; 300 g segura a peça no gargalo durante a campanha.', 'custo'),
+    ('P05', 'Microondulado ou PS 1 mm', 'Microondulado onda E com couché laminado',
+     'Custa bem menos que PS e viaja plano, dobrado nas quinas.', 'custo'),
+    ('P07 · P08 a P11', 'Testeiras, plumas e logos em PETG', 'Polionda 4 mm nas testeiras e plumas; PS 2 mm nos logos',
+     'Mesma leitura de longe por bem menos. São só 4 ilhas, então o LED fica.', 'custo'),
+    ('P13', 'Algodão ou dry-fit, silk ou sublimação', 'Algodão fio 30.1 cardado, silk 3 cores só na frente',
+     'Para 1.000 peças é a combinação mais barata do mercado.', 'custo'),
     ('P04', 'Logo com fita de LED em cada ponta', 'Logo em relevo, sem LED',
      'A ponta de gôndola não tem tomada: seriam 2.995 fontes ou baterias para instalar e trocar.', 'custo'),
     ('P04 · P06', 'Polionda 4 mm na estrutura', 'Papelão ondulado BC com impressão offset laminada',
@@ -175,7 +189,22 @@ DE_PARA = [
     ('P07 · P08 a P11', 'Ilha nacional + kits regionais por cima', 'Estrutura única + só as peças que trocam',
      'Testeiras e plumas já saem com a arte da praça: nenhuma testeira nacional é jogada fora.', 'acerto'),
     ('P14 · P17', 'Colete com fitilhos e colete com pirulito', 'Um colete; o pirulito vai na bag',
-     'O briefing pede mochila pirulito: um colete por motoboy basta.', 'acerto'),
+     'O briefing pede mochila pirulito: um colete por motoboy basta.', 'custo'),
     ('Todas', 'Quantidade "conforme plano"', 'Quantidade por PDV e total fechado',
      'Calculado com a base de lojas do briefing, sem sobra.', 'acerto'),
+]
+
+# quadro-resumo gerencial: (códigos no total, rótulo, imagem, material em poucas palavras)
+RESUMO = [
+    ('P01', 'P01', 'Faixa de gôndola em L', 'p01-gondola', 'PS 0,5 mm'),
+    ('P02', 'P02', 'Gargaleira', 'p02-perspectiva', 'Cartão triplex 300 g'),
+    ('P03', 'P03', 'Wobbler', 'p03-gondola', 'PS 0,5 + PVC cristal'),
+    ('P04', 'P04', 'Ponta de gôndola retrátil', 'p04-perspectiva', 'Papelão BC + PS, sem LED'),
+    ('P05', 'P05', 'Forração de ponto extra', 'p05-perspectiva', 'Microondulado, 4 painéis'),
+    ('P06', 'P06', 'Display de chão', 'p06-abastecido', 'Papelão BC, rodapé polionda'),
+    ('P07', 'P07', 'Ilha cenográfica', 'p07-perspectiva', 'Papelão, polionda, metalon, LED'),
+    ('P08 a P11', 'P08 a P11', 'Comunicação regional da ilha', 'p07-entrada', 'Polionda 4 mm'),
+    ('P12', 'P12', 'Abadá', 'p12-abada', 'Poliéster sublimado'),
+    ('P13', 'P13', 'Camiseta do time', 'p12-camiseta', 'Algodão 30.1, silk 3 cores'),
+    ('P14', 'P14 a P17', 'Kit motoboy', 'p12-capacete', 'Colete, plumas, capa e pirulito'),
 ]

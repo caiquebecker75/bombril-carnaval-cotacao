@@ -440,7 +440,7 @@ svg.ico.mini{width:17px;height:17px;stroke-width:2}
 .tot td.p{font-weight:600}
 .tot td.c{font-family:var(--mono);font-size:11.5px;opacity:.75}
 .tot td.t{font-family:var(--titulo);font-weight:900;font-size:20px;text-align:right;white-space:nowrap}
-.tot th:nth-child(4){text-align:right}
+.tot th:nth-child(5){text-align:right}
 .tot td.o{font-size:12px;opacity:.7}
 .tot.reg td,.tot.reg th{text-align:right}
 .tot.reg td:nth-child(-n+2),.tot.reg th:nth-child(-n+2){text-align:left}
@@ -610,6 +610,63 @@ svg.ico.mini{width:17px;height:17px;stroke-width:2}
 .regras .rg-c svg.ico{width:46px;height:46px}
 .regras .rg-c b{font-size:32px;margin:18px 0 10px}
 .regras .rg-c p{font-size:16px}
+
+/* para baratear: dentro de cada peça */
+.bar{margin-top:12px;border:2px solid var(--vm);background:rgba(227,6,19,.05)}
+.bar-t{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--vm);color:var(--branco);padding:6px 10px}
+.bar-t svg.ico.mini{width:15px;height:15px}
+.bar-i{display:grid;grid-template-columns:auto 18px auto;grid-template-areas:"a s d" "p p p";justify-content:start;column-gap:10px;row-gap:2px;padding:8px 12px;border-top:1px dashed rgba(227,6,19,.35)}
+.bar-i:first-of-type{border-top:0}
+.bar-i s{grid-area:a;font-size:12.5px;opacity:.6;text-decoration-color:var(--vm);text-decoration-thickness:2px}
+.bar-i .dp-s{grid-area:s;width:18px;height:18px;color:var(--vm);align-self:center}
+.bar-i b{grid-area:d;font-size:13px;font-weight:700;color:var(--vm)}
+.bar-i p{grid-area:p;font-size:12px;line-height:1.35;opacity:.75}
+.escuro .bar{border-color:var(--am);background:rgba(255,210,0,.06)}
+.escuro .bar-t{background:var(--am);color:var(--ink)}
+.escuro .bar-i{border-color:rgba(255,210,0,.3)}
+.escuro .bar-i b,.escuro .bar-i .dp-s{color:var(--am)}
+.amarelo .bar{background:var(--branco)}
+.bar.grande{margin-top:18px}
+.bar.grande .bar-i{grid-template-columns:330px 26px 360px 1fr;grid-template-areas:"a s d p";align-items:center;padding:13px 16px;column-gap:16px}
+.bar.grande .bar-i s{font-size:15px}.bar.grande .bar-i b{font-size:16px}.bar.grande .bar-i p{font-size:14px}
+.bar.grande .dp-s{width:22px;height:22px}
+.p3-linha .bar{margin-top:10px}
+/* totais: quantidade por loja */
+.tot td.pls{white-space:nowrap}
+.tot .pl{display:inline-flex;align-items:baseline;gap:6px;margin-right:12px;font-size:11.5px;opacity:.9}
+.tot .pl b{font-family:var(--titulo);font-weight:900;font-size:19px;color:var(--vm);opacity:1}
+/* capa: botão da planilha */
+.c1-xls{display:flex;align-items:center;gap:16px;background:var(--am);color:var(--ink);text-decoration:none;padding:14px 18px;border:2px solid var(--am);transition:transform .2s,box-shadow .2s}
+.c1-xls:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.c1-xls svg.ico{width:36px;height:36px;color:var(--vm)}
+.c1-xls svg.seta-d{width:26px;height:26px;color:var(--ink);animation:desce 1.6s ease-in-out infinite}
+@keyframes desce{50%{transform:translateY(4px)}}
+.c1-xls span{display:flex;flex-direction:column;font-size:12px;line-height:1.3}
+.c1-xls b{font-family:var(--titulo);font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:.01em}
+.cel .bar.grande .bar-i{grid-template-columns:1fr;grid-template-areas:"a" "d" "p"}
+.cel .bar.grande .dp-s{display:none}
+.cel .c1-xls{width:100%}
+/* 02 resumo gerencial */
+.resumo .palco{top:100px}
+.resumo .cabeca{margin-bottom:18px}
+.rz-g{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.rz-c{background:var(--branco);border:2px solid var(--ink);display:flex;flex-direction:column;position:relative;min-height:0}
+.rz-c figure{height:128px;background:#E8E8EA;overflow:hidden}
+.rz-c figure img{width:100%;height:100%;object-fit:contain;transition:transform .5s}
+.rz-c:hover figure img{transform:scale(1.06)}
+.rz-cod{position:absolute;left:0;top:0;font-family:var(--titulo);font-weight:900;font-size:15px;background:var(--vm);color:var(--branco);padding:4px 7px 3px}
+.rz-c h3{font-size:19px;line-height:1.02;padding:9px 10px 2px;text-transform:uppercase}
+.rz-m{font-size:11px;padding:0 10px;opacity:.7;line-height:1.3}
+.rz-pl{font-size:11px;padding:6px 10px 0;line-height:1.35;margin-top:auto}
+.rz-pl b{font-family:var(--titulo);font-weight:900;font-size:17px;color:var(--vm)}
+.rz-t{display:block;font-family:var(--titulo);font-weight:900;font-size:30px;line-height:1;padding:4px 10px 8px;border-top:1px dashed var(--linha);margin-top:6px}
+.rz-xls{background:var(--ink);color:var(--am);text-decoration:none;padding:16px 14px;justify-content:center;gap:6px}
+.rz-xls svg.ico{width:44px;height:44px}
+.rz-xls h3{padding:6px 0 0;color:var(--am);font-size:24px}
+.rz-xls .rz-m{padding:0;color:var(--paper);opacity:.8}
+.rz-b{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--am);color:var(--ink);padding:9px 12px;align-self:flex-start}
+.rz-xls:hover{box-shadow:4px 4px 0 var(--vm);transform:translate(-2px,-2px)}
+.cel .rz-g{grid-template-columns:1fr 1fr}
 
 /* ===== celular: telas empilhadas, sem escala e sem rolagem lateral ===== */
 html.cel,html.cel body{height:auto;overflow-x:hidden;overflow-y:auto;background:var(--paper)}

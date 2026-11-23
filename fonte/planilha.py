@@ -47,14 +47,14 @@ ws['A4'] = 'Validade da proposta (dias):'; ws['C4'].fill = ED
 ws['E4'] = 'Condição de pagamento:'; ws['F4'].fill = ED
 for c in ('A3', 'E3', 'A4', 'E4'):
     ws[c].font = NB
-cols = ['Cód.', 'Peça', 'Unid.', 'Qtd. total', 'Regra (por PDV × PDVs)', 'Preço unitário c/ impostos (R$)', 'Total (R$)',
+cols = ['Cód.', 'Peça', 'Unid.', 'Qtd. total', 'Qtd. por loja × lojas/PDVs', 'Preço unitário c/ impostos (R$)', 'Total (R$)',
         'ICMS %', 'IPI %', 'Prazo de produção (dias úteis)', 'Preço unitário do lote extra de 5% (R$)', 'Alternativa mais barata (opcional)', 'Observações']
 L0 = 6
 cabec(ws, L0, cols)
 lin = D.linhas()
 for k, l in enumerate(lin):
     r = L0 + 1 + k
-    vals = [l['cod'], l['nome'], l['un'], l['total'], l['conta'] + (' · ' + l['obs'] if l['obs'] else ''), None, f'=D{r}*F{r}', None, None, None, None, None, None]
+    vals = [l['cod'], l['nome'], l['un'], l['total'], l['porloja_txt'] + ' × ' + l['pdvs'] + (' · ' + l['obs'] if l['obs'] else ''), None, f'=D{r}*F{r}', None, None, None, None, None, None]
     for i, v in enumerate(vals, 1):
         c = ws.cell(r, i, v); c.font = N; c.border = B; c.alignment = WR
     ws.cell(r, 4).number_format = INT

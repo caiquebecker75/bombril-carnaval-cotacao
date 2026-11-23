@@ -7,6 +7,10 @@ Versão HTML do caderno técnico BOM003 para os fornecedores cotarem o MPDV do C
 - Planilha de resposta: `assets/BOM003-planilha-cotacao.xlsx` (Cotação, Entrega por regional, Especificação, Ajustes)
 - Fontes: `briefing/` (caderno original de 12 páginas e briefing da Bombril; fora do Git)
 
+## Estrutura (13 telas)
+Capa (botão da planilha) · Resumo gerencial (todas as peças numa tela) · Kit por PDV · Total por peça com quantidade por loja (e por regional) · P01 a P07 e uniformes, cada uma com o bloco "Para baratear" · Como responder.
+Telas tiradas a pedido (cronograma, ajustes, onde vai cada peça) estão em `fonte/fora/`. Sem prazos no caderno.
+
 ## O que a revisão mudou
 - Material mais barato que cumpre a função: sem LED nas 2.995 pontas; papelão ondulado BC no lugar de polionda (P04, P06); PS e PVC cristal no lugar de PETG; faca no contorno no lugar de borda transparente; 2 apliques laterais na ponta em vez de 3.
 - Informação redonda: faixa P01 com um tamanho só (32,0 × 4,9 + aba 5); forração em 4 painéis que fecham a volta do PBR (440, não 432); costas do display em 140 + cabeçote; uma especificação por peça; ilha com estrutura única e só testeiras e plumas por praça; quantidades fechadas.
