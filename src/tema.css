@@ -1,0 +1,137 @@
+
+/* ===== tema Bombril Carnaval: vermelho, amarelo, lantejoula, plumas ===== */
+.tela.claro{background:var(--paper)}
+.tela.papel{background:var(--paper-2)}
+.tela.escuro{background:var(--ink-2)}
+.tela.amarelo{background:var(--am)}
+.tela.vermelho{background:var(--vm);color:var(--branco)}
+.vermelho .eyebrow b,.vermelho h1 em,.vermelho h2 em{color:var(--am)}
+h2{font-size:58px}
+h2 em,h1 em{color:var(--vm)}
+.escuro h2 em{color:var(--am)}
+.amarelo h2 em{color:var(--vm)}
+
+.fonte{left:300px;right:300px;bottom:22px;font-size:9px;line-height:1.35;opacity:.5;text-align:center;font-family:var(--mono);letter-spacing:.02em}
+.marcas{left:80px;right:80px;top:28px;height:44px}
+.marcas .par{gap:14px}
+.marcas .par img.bd{height:40px}
+.marcas .par img.lab{height:16px}
+.marcas .x{opacity:.45}
+.marcas .cod{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.55;margin-left:10px;padding-left:14px;border-left:1px solid currentColor}
+#topoBt{top:34px}
+#topoBt a,#topoBt button{font-size:10px;padding:6px 9px}
+[data-fundo="escuro"] #topoBt{color:var(--paper)}
+
+.palco{position:absolute;left:130px;right:130px;top:112px;bottom:70px;display:flex;flex-direction:column;justify-content:center;z-index:2}
+.cabeca{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:26px}
+.cabeca .eyebrow{display:flex;align-items:center;gap:14px}
+.cabeca .eyebrow::before,.cabeca .eyebrow::after{content:'';width:34px;height:1px;background:currentColor;opacity:.55}
+.cabeca h2{margin-top:10px;max-width:1200px}
+.cabeca .lead{margin-top:10px;text-align:center;max-width:780px;font-size:17px}
+.cabeca.esq{align-items:flex-start;text-align:left}
+.cabeca.esq .eyebrow::before{display:none}
+.cabeca.esq .lead{text-align:left}
+.outras{font-size:14px;line-height:1.45;opacity:.78;max-width:900px}
+.outras b{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-right:6px;color:var(--vm)}
+.escuro .outras b,.vermelho .outras b{color:var(--am)}
+
+/* fio do caderno no topo */
+#fio{position:absolute;left:50%;top:44px;transform:translateX(-50%);display:flex;gap:24px;list-style:none;z-index:40;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);transition:opacity .4s}
+#fio li{display:flex;align-items:center;gap:8px;opacity:.35;transition:opacity .4s}
+#fio li::before{content:'';width:7px;height:7px;border-radius:50%;border:1px solid currentColor;transition:background .4s,box-shadow .4s}
+#fio li.on{opacity:1}#fio li.on::before{background:var(--vm);border-color:var(--vm);box-shadow:0 0 10px var(--vm)}
+#fio li.feito{opacity:.65}#fio li.feito::before{background:currentColor}
+#fio.some{opacity:0}
+[data-fundo="escuro"] #fio{color:var(--paper)}
+[data-fundo="escuro"] #fio li.on::before{background:var(--am);border-color:var(--am);box-shadow:0 0 10px var(--am)}
+#prog i{background:var(--vm)}
+[data-fundo="escuro"] #prog i{background:var(--am)}
+
+/* cortina: vermelho + amarelo com as duas marcas */
+#wipe .wp-a{background:var(--vm)}
+#wipe .wp-b{background:var(--am)}
+#wipe .wp-b .par-w img.b{height:120px}
+#wipe .wp-b .par-w img.l{height:44px}
+
+/* decoração viva: lantejoulas, estrelas e plumas que flutuam */
+.confete{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.confete svg{position:absolute;width:16px;height:16px;color:var(--vm);opacity:.85;animation:cai 9s linear infinite}
+.confete svg.am{color:var(--am)}
+.confete svg.br{color:var(--branco)}
+.confete svg.e{width:14px;height:14px;animation:pisca 2.6s ease-in-out infinite}
+@keyframes cai{0%{transform:translateY(-40px) rotate(0)}100%{transform:translateY(980px) rotate(540deg)}}
+@keyframes pisca{0%,100%{transform:scale(.4);opacity:.2}50%{transform:scale(1.15);opacity:1}}
+.plumas{position:absolute;pointer-events:none;z-index:1}
+.plumas svg{position:absolute;width:60px;height:140px;transform-origin:50% 100%;transform:rotate(var(--r,0deg));animation:balanca 4.5s ease-in-out infinite}
+.plumas svg:nth-child(odd){color:var(--vm)}
+.plumas svg:nth-child(even){color:var(--am)}
+@keyframes balanca{0%,100%{transform:rotate(var(--r,0deg))}50%{transform:rotate(calc(var(--r,0deg) + 6deg))}}
+.pdf .confete svg,.pdf .plumas svg{animation:none}
+.cel .confete,.cel .plumas{display:none}
+
+/* abas */
+.aba{font-size:11px;padding:12px 16px 10px}
+.aba.on{background:var(--ink);color:var(--am)}
+.escuro .aba.on,.vermelho .aba.on{background:var(--am);color:var(--ink)}
+.aba::after{background:var(--vm)}
+.escuro .aba::after,.vermelho .aba::after{background:var(--am)}
+.clique svg.ico{width:18px;height:18px;stroke-width:2}
+
+/* cabeçalho de peça */
+.pc-cab{display:flex;align-items:flex-end;gap:22px}
+.pc-cod{font-family:var(--titulo);font-weight:900;font-size:30px;line-height:1;background:var(--vm);color:var(--branco);padding:10px 12px 8px;letter-spacing:.02em;white-space:nowrap}
+.escuro .pc-cod,.vermelho .pc-cod{background:var(--am);color:var(--ink)}
+.pc-cab h2{font-size:54px;white-space:nowrap}
+.pc-cab .eyebrow{display:block;margin-bottom:6px;opacity:.7}
+.pc-sub{font-size:15px;line-height:1.45;opacity:.8;margin-top:8px;max-width:640px}
+
+/* ficha técnica (gerada de fonte/dados.py) */
+.ficha{width:100%;border-collapse:collapse;font-size:12.5px;line-height:1.3}
+.ficha th{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;text-align:left;padding:7px 8px;background:var(--ink);color:var(--am);font-weight:700}
+.ficha td{padding:6px 8px;border-bottom:1px solid var(--linha);vertical-align:top}
+.ficha td:first-child{font-family:var(--mono);font-size:10.5px;color:var(--vm);font-weight:700;width:30px}
+.ficha td.q{font-family:var(--mono);font-weight:700;white-space:nowrap;width:58px}
+.ficha td.p{font-weight:600}
+.ficha tr.ref td{opacity:.55}
+.escuro .ficha td{border-color:var(--linha-cl)}
+.escuro .ficha th{background:var(--am);color:var(--ink)}
+.escuro .ficha td:first-child{color:var(--am)}
+
+/* caixa de quantidade (gerada) */
+.qtd{display:flex;align-items:stretch;border:2px solid var(--ink);background:var(--branco)}
+.qtd>div{padding:12px 16px;display:flex;flex-direction:column;justify-content:center;gap:3px;border-right:2px solid var(--ink)}
+.qtd>div:last-child{border-right:0;background:var(--vm);color:var(--branco);flex:1.2}
+.qtd span{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.qtd b{font-family:var(--titulo);font-weight:900;font-size:40px;line-height:.95}
+.qtd i{font-style:normal;font-size:11.5px;opacity:.8;line-height:1.25}
+.qtd .x{display:grid;place-items:center;font-family:var(--titulo);font-size:30px;padding:0 8px;border-right:2px solid var(--ink);opacity:.5}
+.escuro .qtd{border-color:var(--paper);background:transparent}
+.escuro .qtd>div,.escuro .qtd .x{border-color:var(--paper)}
+.escuro .qtd>div:last-child{background:var(--am);color:var(--ink)}
+
+/* moldura de render */
+.foto{position:relative;background:#E8E8EA;overflow:hidden}
+.foto img{width:100%;height:100%;object-fit:contain;transition:transform .6s}
+.foto:hover img{transform:scale(1.04)}
+.foto .rot{position:absolute;left:10px;bottom:8px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;color:var(--ink)}
+.foto .lupa{position:absolute;right:8px;top:8px;width:26px;height:26px;display:grid;place-items:center;background:var(--ink);color:var(--am)}
+.foto .lupa svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+.pdf .foto .lupa,.cel .foto .lupa{display:none}
+
+/* selos de mudança */
+.selo{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 8px;background:var(--am);color:var(--ink)}
+.selo.vm{background:var(--vm);color:var(--branco)}
+.selo svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* desenho técnico em SVG: traço que desenha ao entrar */
+.tec{overflow:visible}
+.tec .ln{fill:none;stroke:var(--ink);stroke-width:2;stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 1.8s cubic-bezier(.4,0,.2,1) .3s}
+.tec .vinco{fill:none;stroke:var(--vm);stroke-width:2;stroke-dasharray:7 6}
+.tec .cota{stroke:var(--vm);stroke-width:1.2;fill:none}
+.tec .cota-t{font-family:var(--mono);font-size:13px;fill:var(--vm);font-weight:700}
+.tec .rot-t{font-family:var(--mono);font-size:11px;fill:var(--ink);letter-spacing:.12em;text-transform:uppercase;opacity:.6}
+.tec .pre{fill:var(--am);opacity:0;transition:opacity .8s ease 1.4s}
+.tela.ativa .tec .ln,.pdf .tec .ln,.cel .tec .ln{stroke-dashoffset:0}
+.tela.ativa .tec .pre,.pdf .tec .pre,.cel .tec .pre{opacity:1}
+.escuro .tec .ln{stroke:var(--paper)}
+.escuro .tec .rot-t{fill:var(--paper)}

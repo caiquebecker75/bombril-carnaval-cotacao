@@ -1,0 +1,53 @@
+
+/* ===== celular: telas empilhadas, sem escala e sem rolagem lateral ===== */
+html.cel,html.cel body{height:auto;overflow-x:hidden;overflow-y:auto;background:var(--paper)}
+.cel #wrap{position:static;overflow:visible;background:none}
+.cel #stage{position:static;width:auto;height:auto;margin:0;transform:none!important;overflow:visible}
+.cel .tela{position:relative;inset:auto;opacity:1;visibility:visible;transform:none;filter:none;transition:none;padding:22px 16px 30px;overflow:hidden}
+.cel .tela::before,.cel .grao,.cel #topoBt,.cel #rodape,.cel #cursor,.cel #anel,.cel #fala,.cel .clique,.cel #fio,.cel #wipe,.cel #faixas{display:none!important}
+.cel .anima{opacity:1;transform:none;transition:none}
+.cel .marcas,.cel .palco,.cel .fonte,.cel .c1-texto,.cel .c1-leque{position:static;inset:auto;width:auto;max-width:100%;height:auto}
+.cel .marcas{margin-bottom:18px;flex-wrap:wrap;gap:8px}
+.cel .marcas .cod{display:none}
+.cel h1{font-size:44px!important}
+.cel h2,.cel .pc-cab h2{font-size:32px!important;white-space:normal!important}
+.cel .fonte{display:block;margin-top:18px;font-size:10px;text-align:left}
+.cel img{max-width:100%}
+.cel .palco{display:block}
+.cel .cabeca{margin-bottom:16px}
+/* grades viram pilha */
+.cel .rg-g,.cel .kit-g,.cel .on-g,.cel .p1-meio,.cel .p1-baixo,.cel .p3-linha,.cel .p4-pc,.cel .p4-aj,.cel .p4-img,.cel .p5-baixo,.cel .p5-conta,.cel .p6-ab,.cel .p6-pc,.cel .p6-img,.cel .p7-est,.cel .p7-pl,.cel .p7-img,.cel .un-g,.cel .pracas,.cel .p7-pr,.cel .rs-check{display:grid!important;grid-template-columns:1fr!important;gap:14px!important;height:auto!important}
+.cel .rg-linha{grid-template-columns:repeat(2,1fr);row-gap:14px}
+.cel .rg-trilho{display:none}
+.cel .dp{grid-template-columns:1fr;gap:4px}
+.cel .dp-s{display:none}
+.cel .palco.p2,.cel .palco.p3,.cel .palco.rs{display:flex;flex-direction:column;gap:16px}
+.cel .p2-esq,.cel .p2-meio,.cel .p3-esq,.cel .rs-dir{width:100%;height:auto}
+.cel .p2-meio .foto{height:420px}
+.cel .p3-esq .foto{height:260px}
+.cel .foto{height:240px}
+.cel .p1-fotos{height:auto;grid-template-columns:1fr 1fr}
+.cel .p1-fotos .foto{height:160px}
+.cel .qtd{flex-wrap:wrap}
+.cel .qtd>div{flex:1 1 40%}
+.cel .ficha,.cel .tot{display:block;overflow-x:auto;font-size:11.5px}
+.cel .painel{display:block!important}
+.cel .abas-bts,.cel .on-bts{display:none}
+.cel .painel+.painel{margin-top:22px}
+.cel .regbar{height:180px;gap:6px}
+.cel .rb b{font-size:14px}
+.cel .c1-leque{height:auto;margin-top:24px}
+.cel .c1-plumas,.cel .c1-logo{display:none}
+.cel .c1-disco{position:static;width:260px;height:260px;margin:0 auto;animation:none}
+.cel .c1-datas{width:auto;flex-wrap:wrap}
+.cel .c1-acoes,.cel .rs-bts{flex-wrap:wrap}
+.cel .p6-num b{font-size:110px}
+.cel .p6-grade i{height:30px}
+.cel .p6-grade{background-image:none;gap:6px 2px}
+.cel .rs-l{grid-template-columns:44px 1fr 64px}
+.cel .rs-l span:nth-child(n+4){display:none}
+.cel .tec{max-width:100%}
+.cel #sumario{display:none}
+.cel .p7-reg .qtd{min-width:0}
+.cel p,.cel li,.cel .dp p,.cel .kit p,.cel .rg-p span,.cel .on-bts .aba,.cel .kit li,.cel .outras{font-size:14px}
+.cel .kit-cab span{font-size:11px}
